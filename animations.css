@@ -1,0 +1,67 @@
+.pfp-shine {
+    animation-name: pfp-shine;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes pfp-shine {
+    from {
+        box-shadow: white 0px 0px 14px;
+    }
+
+    to {
+        box-shadow: white 0px 0px 10px;
+    }
+}
+
+.text-shine {
+    animation-name: text-shine;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes text-shine {
+    from {
+        text-shadow: white 0 0 14px;
+    }
+
+    to {
+        text-shadow: white 0 0 10px;
+    }
+}
+
+.border-distortion {
+    animation-name: border-distortion;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes border-distortion {
+    from {
+        border-radius: 50% 30% 50% 30%;
+    }
+
+    to {
+        border-radius: 30% 50% 30% 50%;
+    }
+}
+
+.rotation {
+    animation-name: rotation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(6deg);
+    }
+
+    to {
+        transform: rotate(-6deg);
+    }
+}
