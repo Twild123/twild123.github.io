@@ -1,0 +1,417 @@
+<!-- <> -->
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta charset="UTF-8">
+    <title>API Series y peliculas</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .font-lilita-one {
+            font-family: "Lilita One"
+        }
+
+        .font-arial {
+            font-family: "Arial"
+        }
+
+        .fz16 {
+            font-size: 16px
+        }
+
+        .bg-black {
+            background-color: #131825;
+        }
+
+        .bg-purple {
+            background-color: #6c63ff;
+        }
+
+        .bg-purple-gradient {
+            background: linear-gradient(to right, #6c63ff, #9198e5);
+        }
+
+        .bg-white {
+            background: linear-gradient(to right, #dbdbdb, #c7c7c7);
+        }
+
+        .bg-lblack {
+            background-color: #232a3e;
+        }
+
+        .bg-red {
+            background-color: #ff6584;
+        }
+
+        .bg-green {
+            background-color: #22c55e;
+        }
+
+        .bg-orange {
+            background-color: #f59e0b;
+        }
+
+        .bg-lblue {
+            background-color: #06b6d4;
+        }
+
+        .bg-pink {
+            background-color: #ec4899;
+        }
+
+        .bg-gray {
+            background-color: rgba(185, 185, 185, 0.548);
+        }
+
+        .bs-black20 {
+            box-shadow: 0px 0px 20px black;
+        }
+
+        .border2 {
+            border: 2px solid black
+        }
+
+        .border2:hover {
+            border: 2px solid lime
+        }
+
+        .br8 {
+            border-radius: 8px;
+        }
+
+        .br16 {
+            border-radius: 16px;
+        }
+
+        .p16 {
+            padding: 16px;
+        }
+
+        .cien-x-cien {
+            width: 100%;
+            height: 100%
+        }
+
+        .of-hidden {
+            overflow: hidden
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-row {
+            flex-direction: row;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .no-display {
+            display: none
+        }
+
+        .jc-space-between {
+            justify-content: space-between;
+        }
+
+        .jc-center {
+            justify-content: center;
+        }
+
+        .jc-self-center {
+            justify-self: center;
+        }
+
+        .jc-self-flex-start {
+            justify-self: flex-start;
+        }
+
+        .jc-self-space-between {
+            justify-self: space-between;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .align-items-flex-start {
+            align-items: flex-start;
+        }
+
+        .align-self-center {
+            align-self: center;
+        }
+
+        .gap6 {
+            gap: 6px;
+        }
+
+        .gap8 {
+            gap: 8px;
+        }
+
+        .wrap {
+            flex-wrap: wrap;
+        }
+
+        .flex-1 {
+            flex: 1;
+        }
+
+        .f-1-1-160 {
+            flex: 1 1 160px;
+        }
+
+        .f-2-1-300 {
+            flex: 2 1 300px;
+        }
+
+        .f-1-1-200 {
+            flex: 1 1 200px;
+        }
+
+        .app-header {
+            width: 100vw;
+            height: 64px;
+            padding: 0 30px;
+        }
+
+        .div-logo {
+            width: 48px;
+            height: 28px;
+            border-radius: 4px;
+        }
+
+        .control {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+
+        .app-main {
+            width: 100vw;
+            height: calc(100vh - 112px);
+        }
+
+        .app-footer {
+            width: 100vw;
+            height: 48px;
+        }
+
+        .block-container {
+            width: 90%;
+            height: 90%;
+            border-radius: 8px;
+            margin: 90px;
+        }
+
+        .nav-container {
+            width: 100%;
+            height: 50px;
+        }
+
+        .nav-title {
+            width: 60%;
+            height: 100%
+        }
+
+        .nav-year {
+            width: 30%;
+            height: 100%
+        }
+
+        .nav-page {
+            width: 5%;
+            height: 100%
+        }
+
+        .nav-search {
+            width: 5%;
+            height: 100%
+        }
+
+        #search-button img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        .results {
+            width: 100%;
+            height: calc(100% - 50px)
+        }
+
+        .billboard {
+            width: 140px;
+            height: 180px;
+        }
+
+        .billboard:hover {
+            box-shadow: 0px 0px 50px black;
+            transform: scale(1.1);
+            transition: all 0.5s ease-in-out
+        }
+
+        .b-poster {
+            width: 100%;
+            height: 60%
+        }
+
+        .b-meta {
+            width: 100%;
+            height: 40%
+        }
+
+
+
+        @media (min-width:768px) {
+            .app-sidebar {
+                width: 10%;
+                height: 100%;
+                padding: 12px;
+            }
+
+            .items-sidebar {
+                width: 100%;
+                height: 40px;
+                border-radius: 8px;
+            }
+
+            .block-container {
+                width: 90%;
+                height: 90%;
+                border-radius: 8px;
+                margin: 90px;
+            }
+        }
+    </style>
+    <script>document.addEventListener("DOMContentLoaded", () => {
+            const movie_name = document.querySelector("#movie-name");
+            const movie_year = document.querySelector("#movie-year");
+            const movie_page = document.querySelector("#movie-page");
+            const search_button = document.querySelector("#search-button");
+            const billboards = document.getElementById("billboards");
+
+            const api_key = "5ef0849d";
+
+            function construirEndpoint() {
+                let s = movie_name.value;
+                let y = movie_year.value;
+                let p = movie_page.value;
+
+                return `https://www.omdbapi.com/?apikey=${api_key}&s=${s}&y=${y}&page=${p}`;
+            }
+
+            async function obtenerPeliculas() {
+                try {
+                    let url = construirEndpoint();
+                    let response = await fetch(url);
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error: ${response.status}`);
+                    }
+
+                    return await response.json();
+
+                } catch (error) {
+                    document.querySelector("#total-results").textContent = `Resultados totales: 0`;
+                    billboards.innerHTML = '<p style="color:white;font-size:140%">Sin resultados</p>';
+                    console.error(error);
+                }
+            }
+
+            function crearPortadas(data) {
+                if (data.Response === "False") {
+                    document.querySelector("#total-results").textContent = `Resultados totales: 0`;
+                    billboards.innerHTML = '<p style="color:white;font-size:140%">Sin resultados</p>';
+                    return;
+                }
+
+                const movies = data.Search;
+
+                document.querySelector("#total-results").textContent = `Resultados totales: ${data.totalResults}`;
+
+                billboards.innerHTML = movies.map(m => `
+            <div class="billboard bg-purple br8 of-hidden">
+                <img src="${m.Poster}" class="b-poster">
+                <div class="b-meta bg-gray flex flex-col align-items-flex-start">
+                    <div class="fz16 font-arial">Titulo: ${m.Title}</div>
+                    <div class="fz16 font-arial">Tipo: ${m.Type}</div>
+                    <div class="fz16 font-arial">Año: ${m.Year}</div>
+                </div>
+            </div>
+        `).join('');
+            }
+
+            search_button.addEventListener("click", async () => {
+                let data = await obtenerPeliculas();
+                crearPortadas(data);
+            });
+        });
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="app-header bg-purple-gradient flex flex-row jc-space-between align-items-center">
+        <div class="div-logo bg-gray"></div>
+        <h1 class="font-lilita-one">Buscador de peliculas y series</h1>
+        <div class="flex flex-row align-items-center gap8">
+            <div class="control bg-gray"></div>
+            <div class="control bg-gray"></div>
+            <div class="control bg-gray"></div>
+        </div>
+    </section>
+
+    <section class="app-main bg-lblack flex flex-row">
+        <div class="app-sidebar bg-black flex flex-col gap6 pad16 align-self-center no-display">
+            <button class="items-sidebar bg-lblack border2"></button>
+            <button class="items-sidebar bg-lblack border2"></button>
+            <button class="items-sidebar bg-lblack border2"></button>
+            <button class="items-sidebar bg-lblack border2"></button>
+            <button class="items-sidebar bg-lblack border2"></button>
+            <button class="items-sidebar bg-lblack border2"></button>
+            <button class="items-sidebar bg-lblack border2"></button>
+            <button class="items-sidebar bg-lblack border2"></button>
+            <button class="items-sidebar bg-lblack border2"></button>
+            <button class="items-sidebar bg-lblack border2"></button>
+            <button class="items-sidebar bg-lblack border2"></button>
+
+
+        </div>
+        <div class="block-container bg-black flex flex-col align-self-center of-hidden bs-black20">
+            <div class="nav-container flex flex-row br8">
+                <div class="nav-title"><input type="text" class="cien-x-cien br16 border2"
+                        placeholder="Nombre de la pelicula..." id="movie-name"></div>
+                <div class="nav-year"><input type="text" class="cien-x-cien br16 border2"
+                        placeholder="Año de la pelicula..." id="movie-year"></div>
+                <div class="nav-page"><input type="text" class="cien-x-cien br16 border2" placeholder="Pag"
+                        id="movie-page"></div>
+                <div class="nav-search"><button class="cien-x-cien br16 border2" id="search-button"><img
+                            src="img/lupa.png"></button></div>
+            </div>
+            <div class="results bg-black flex flex-row wrap gap6 jc-center align-items-center" id="billboards">
+                <!-- map() -->
+            </div>
+
+        </div>
+    </section>
+    <section class="app-footer bg-black">
+        <p id="total-results" style="color:white"></p>
+    </section>
+
+</body>
+
+</html>
